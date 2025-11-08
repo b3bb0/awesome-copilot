@@ -1,0 +1,31 @@
+# Go Docker Instructions
+
+## Overview
+This document provides the basic instructions to set up Docker with Go.
+
+## Prerequisites
+- Install [Docker](https://docs.docker.com/get-docker/) on your machine.
+- Go (version 1.16 or later) installed.
+
+## Setup Steps
+1. Create a `Dockerfile` in your Go project root:
+   ```Dockerfile
+   FROM golang:1.16
+   WORKDIR /app
+   COPY . .
+   RUN go build -o main .
+   CMD ["./main"]
+   ```
+
+2. Build the Docker image:
+   ```bash
+   docker build -t my-go-app .
+   ```
+
+3. Run the Docker container:
+   ```bash
+   docker run -p 8080:8080 my-go-app
+   ```
+
+## Conclusion
+Now you have a running Go application inside a Docker container!
